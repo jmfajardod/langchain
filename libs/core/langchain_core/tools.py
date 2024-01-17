@@ -296,7 +296,7 @@ class ChildTool(BaseTool):
 
     def run(
         self,
-        tool_input: Union[str, Dict],
+        tool_input: Union[str, Dict[str, Any]],
         verbose: Optional[bool] = None,
         start_color: Optional[str] = "green",
         color: Optional[str] = "green",
@@ -768,7 +768,9 @@ def tool(
                 return
     """
 
-    def _make_with_name(tool_name: str) -> Callable:
+    def _make_with_name(
+        tool_name: str
+    ) -> Callable[[Union[Callable, Runnable]], BaseTool]:
         def _make_tool(dec_func: Union[Callable, Runnable]) -> BaseTool:
             if isinstance(dec_func, Runnable):
                 runnable = dec_func
