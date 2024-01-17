@@ -2182,7 +2182,7 @@ class Qdrant(VectorStore):
             async_client = None
         else:
             async_client = AsyncQdrantClient(
-                location=location,
+                # location=location, # TODO: remove
                 url=url,
                 port=port,
                 grpc_port=grpc_port,
@@ -2192,7 +2192,7 @@ class Qdrant(VectorStore):
                 prefix=prefix,
                 timeout=timeout,
                 host=host,
-                path=path,
+                # path=path, # TODO: remove 
                 **kwargs,
             )
 
